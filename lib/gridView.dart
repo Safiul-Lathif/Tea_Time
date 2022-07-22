@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grid/cart.dart';
 import 'package:grid/model/drinks_model.dart';
 
 import 'main.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  final void Function(List<drinks_model>) refreshCallBack;
+  MyHomePage(this.refreshCallBack, {Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -98,7 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     drinks_model dm = drinks_model("\$7.00",
                         "image/download.jpeg", "Heart Cofee", item_count);
                     mainViewPage.emptyList.add(dm);
-                    MyCart(mainViewPage.emptyList);
+                    // MyCart(mainViewPage.emptyList);
+                    widget.refreshCallBack(mainViewPage.emptyList);
                   });
                 },
               ),
