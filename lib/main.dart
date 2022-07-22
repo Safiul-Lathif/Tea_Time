@@ -33,7 +33,7 @@ class _MultiSplitViewExampleState extends State<MultiSplitViewExample> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.6,
-            child: MyHomePage(),
+            child: MyHomePage(refresh),
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.4,
@@ -78,5 +78,11 @@ class _MultiSplitViewExampleState extends State<MultiSplitViewExample> {
         ),
       ),
     );
+  }
+
+  refresh(List<drinks_model> emptyList) {
+    setState(() {
+      widget.emptyList = emptyList;
+    });
   }
 }
